@@ -5,7 +5,7 @@
 
 -----------------
 
-Инструкция для Linux Ubuntu 20.04
+Инструкция для Linux Ubuntu 20.04.
 Основные утилиты - 
 ```sh
 sudo apt update -y && sudo apt install git screen nano python3-pip -y
