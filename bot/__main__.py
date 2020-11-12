@@ -7,8 +7,6 @@ import logging
 import re
 import string
 from asyncio import get_event_loop, sleep
-from json import loads
-from random import choice, randrange
 
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
