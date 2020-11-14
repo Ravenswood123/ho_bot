@@ -1,3 +1,5 @@
+from config import bad_word_emo
+
 words_list_ = [
     "блять",
     "блядина",
@@ -230,5 +232,5 @@ words_list_ = [
 
 async def badworld_seach_(some_text):
     for i in words_list_:
-        some_text = str(some_text.replace(str(i), "(плохое слово)"))
+        some_text = str(some_text.replace(str(i), bad_word_emo))
     return some_text
