@@ -10,7 +10,7 @@ from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from aiogram.utils.exceptions import MessageToDeleteNotFound, Throttled
 
 from badword import badworld_seach_
-from config import TOKEN
+from config import TOKEN, internal_link, external_link, bad_word_emo
 
 loop = get_event_loop()
 bot = Bot(token=TOKEN, parse_mode="HTML")
@@ -61,8 +61,8 @@ async def text_check_func_(message):
 	return all_ok
 
 async def simple_filter(text):
-	out_string_domain = re.sub(r'[\S]+\.(net|com|org|info|edu|gov|uk|de|ca|jp|fr|au|us|ru|ch|it|nel|se|no|es|mil|kz|ua|by|ly|porn|sex|name|icu|biz|tk|ml|gq|ga|life|int|arpa|cc|gg|pw|бел|рус|рф|укр|ads|active|app|apple|author|aws|band|bank|best|bet|blog|bot|me|build|buy|cafe|car|ceo|chat|site|dev|cloud|club|cool|data|design|docs|drive|tor|fun|game|gay|global|gold|host|jobs|like|live)[\S]*\s?','(ссылка удалена)',str(text))
-	out_string_profile = re.sub(r'[\s](@|#)[\S]*\s?',' (ссылка удалена) ', out_string_domain)
+	out_string_domain = re.sub(r'[\S]+\.(net|com|org|info|edu|gov|uk|de|ca|jp|fr|au|us|ru|ch|it|nel|se|no|es|mil|kz|ua|by|ly|porn|sex|name|icu|biz|tk|ml|gq|ga|life|int|arpa|cc|gg|pw|бел|рус|рф|укр|ads|active|app|apple|author|aws|band|bank|best|bet|blog|bot|me|build|buy|cafe|car|ceo|chat|site|dev|cloud|club|cool|data|design|docs|drive|tor|fun|game|gay|global|gold|host|jobs|like|live)[\S]*\s?', external_link, text)
+	out_string_profile = re.sub(r'[\s](@|#)[\S]*\s?', ' {} '.format(internal_link), out_string_domain)
 	final_string = await badworld_seach_(out_string_profile.lower())
 	return final_string
 
