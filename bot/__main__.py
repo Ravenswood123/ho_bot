@@ -10,7 +10,7 @@ from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from aiogram.utils.exceptions import MessageToDeleteNotFound, Throttled
 
 from badword import badworld_seach_
-from config import TOKEN, internal_link, external_link, bad_word_emo
+from config import TOKEN, internal_link, external_link
 
 loop = get_event_loop()
 bot = Bot(token=TOKEN, parse_mode="HTML")
