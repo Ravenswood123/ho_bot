@@ -20,7 +20,7 @@ dp.middleware.setup(LoggingMiddleware())
 logging.basicConfig(format=u'%(filename)+13s [ LINE:%(lineno)-4s] %(levelname)-8s [%(asctime)s] %(message)s', level=logging.INFO)
 
 readonly = False
-max_len = 3000
+max_len = 3600
 
 async def text_check_func_(message):
 	len_ok = True
