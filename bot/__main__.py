@@ -10,7 +10,7 @@ from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from aiogram.utils.exceptions import MessageToDeleteNotFound, Throttled
 
 from badword import badworld_seach_
-from config import TOKEN, internal_link, external_link
+from config import TOKEN, internal_link, external_link, system_msgs_delete
 
 loop = get_event_loop()
 bot = Bot(token=TOKEN, parse_mode="HTML")
@@ -104,7 +104,8 @@ async def handle_message_received(message):
 	
 @dp.message_handler(content_types=['NEW_CHAT_MEMBERS', 'LEFT_CHAT_MEMBER', 'PINNED_MESSAGE', 'NEW_CHAT_TITLE', 'NEW_CHAT_PHOTO', 'DELETE_CHAT_PHOTO', 'GROUP_CHAT_CREATED'])
 async def handle_message_received(message):
-	await bot.delete_message(message.chat.id, message.message_id)
+	if system_msgs_delete:
+		await bot.delete_message(message.chat.id, message.message_id)
 
 async def shutdown(dispatcher: Dispatcher):
 	await dispatcher.storage.close()
