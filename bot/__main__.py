@@ -102,7 +102,7 @@ async def statistics(message: types.Message):
 async def handle_message_received(message):
 	await text_check_func_(message)
 	
-@dp.message_handler(content_types=['NEW_CHAT_MEMBERS', 'LEFT_CHAT_MEMBER'])
+@dp.message_handler(content_types=['NEW_CHAT_MEMBERS', 'LEFT_CHAT_MEMBER', 'PINNED_MESSAGE', 'NEW_CHAT_TITLE', 'NEW_CHAT_PHOTO', 'DELETE_CHAT_PHOTO', 'GROUP_CHAT_CREATED'])
 async def handle_message_received(message):
 	await bot.delete_message(message.chat.id, message.message_id)
 
