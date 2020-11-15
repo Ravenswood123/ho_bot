@@ -101,6 +101,10 @@ async def statistics(message: types.Message):
 @dp.message_handler(content_types=['text'])
 async def handle_message_received(message):
 	await text_check_func_(message)
+	
+@dp.message_handler(content_types=['NEW_CHAT_MEMBERS', 'LEFT_CHAT_MEMBER'])
+async def handle_message_received(message):
+	await bot.delete_message(message.chat.id, message.message_id)
 
 async def shutdown(dispatcher: Dispatcher):
 	await dispatcher.storage.close()
