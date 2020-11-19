@@ -2,15 +2,17 @@
 
 import logging
 import re
+import aiohttp
 from asyncio import get_event_loop
 
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
 from aiogram.utils.exceptions import MessageToDeleteNotFound, Throttled
+from aiogram.types.chat import Chat
 
 from badword import badworld_seach_
-from config import TOKEN, internal_link, external_link, system_msgs_delete
+from config import TOKEN, internal_link, external_link, system_msgs_delete, cas_check
 
 loop = get_event_loop()
 bot = Bot(token=TOKEN, parse_mode="HTML")
